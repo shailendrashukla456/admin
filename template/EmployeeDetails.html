@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+<!--
+Author: Colorlib
+Author URL: https://colorlib.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>EmployeeDetails</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+<style>
+
+body {
+  background: #76b852;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #76b852, #8DC26F);
+  background: -moz-linear-gradient(to top, #76b852, #8DC26F);
+  background: -o-linear-gradient(to top, #76b852, #8DC26F);
+  background: linear-gradient(to top, #76b852, #8DC26F);
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+  color: #fff;
+  font-weight: 100;
+  text-transform: capitalize;
+  letter-spacing: 4px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+</style>
+</head>
+<body>
+	<!-- main -->
+  
+	<div class="main-w3layouts wrapper">
+		<h1>Employee Details </h1>
+		
+    <table class="table table-bordered table-responsive table-condensed" style="text-align:center;">  
+      <thead>  
+          <tr class="btn-primary">  
+            <th>Id</th>
+              <th>Name</th>  
+              <th>Age</th>  
+              <th>Mobile</th>  
+              <th>Email</th>
+              <th>Password</th>
+              <th>City</th>
+              <th>Salary</th>
+              <th>Action's</th>  
+          </tr>  
+      </thead>  
+     <tbody> 
+        {% for emp in employee %} 
+          <tr> 
+            <td>{{emp.Id}}</td> 
+            <td>{{emp.name}}</td>
+            <td>{{emp.age}}</td>
+            <td>{{emp.mobile}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.password}}</td>
+            <td>{{emp.city}}</td>
+            <td>{{emp.salary}}</td> 
+            <td><a href="{% url 'update' emp.Id %}">Update</a>&nbsp;
+            <a style="color:red" href="{% url 'delete' emp.Id %}">Delete</a></td>
+          </tr>  
+          {% endfor %}
+      </tbody>  
+  </table>  
+          
+	</div>
+	<!-- //main -->
+</body>
+</html>
+{% endblock %}
